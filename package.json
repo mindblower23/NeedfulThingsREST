@@ -1,0 +1,15 @@
+{
+  "name": "needful-things-rest",
+  "version": "1.0.0",
+  "description": "rest server for needful things app",
+  "main": "index.js",
+  "scripts": {
+    "start": "node main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Harald Salaun",
+  "license": "ISC",
+  "dependencies": {
+    "mysql": "^2.13.0"
+  }
+}
