@@ -9,10 +9,10 @@ const actions = new (require('./myModules/actions.js'))();
 var server = http.createServer(function (req, resp) {
 
   // Set CORS headers
-  resp.setHeader('Access-Control-Allow-Origin', '*');
+  resp.setHeader('Access-Control-Allow-Origin', 'http://localhost:8080');
   resp.setHeader('Access-Control-Request-Method', '*');
-  resp.setHeader('Access-Control-Allow-Methods', 'GET');
-  resp.setHeader('Access-Control-Allow-Headers', '*');
+  resp.setHeader('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+  resp.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
     var urlObj = url.parse(req.url, true);
     var path = urlObj.pathname.substr(1);
