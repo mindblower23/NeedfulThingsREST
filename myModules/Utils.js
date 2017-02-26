@@ -1,6 +1,6 @@
 class Utils{
 
-  static generateTreeViewArray(source, childKey, parentKey, parent_id) {
+  static generateTreeViewArray(source, childKey, parentKey, parent_id, parent_id_history = []) {
 
     //if the parent_id is undefined use the parent_id of the first array item
     if (parent_id === undefined)
@@ -9,10 +9,12 @@ class Utils{
     //do we need to order the array by parent_id first?
     let target = source.filter(item => (item[parentKey] === parent_id));
 
-    if (target.length > 0){
-      for (let i = 0; i < target.length; i++){
-        target[i].childs = Utils.generateTreeViewArray(source, childKey, parentKey, target[i][childKey]);
-      }
+    //add the current parent_id to the array of parent_ids for storing all parent dependencies
+    parent_id_history.push(parent_id);
+
+    for (let i = 0; i < target.length; i++){
+      target[i].parentIdHistory = parent_id_history;
+      target[i].children = Utils.generateTreeViewArray(source, childKey, parentKey, target[i][childKey], parent_id_history.slice());
     }
 
     return target;
