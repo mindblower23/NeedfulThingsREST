@@ -1,10 +1,10 @@
 
 module.exports = {
     dbConnAttr : {
-        host     : 'localhost',
+        host     : '192.168.0.110',
         user     : 'root',
         password : 'root',
         database : 'needfulthings',
-        port     : '8889'
+        port     : '3306'
     }
 };
