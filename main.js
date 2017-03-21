@@ -23,7 +23,7 @@ var server = http.createServer(function (req, resp) {
     if(path === "action"){
 
         //Call an Action and return JSON
-        actions.act(queryObj)
+        actions.act(queryObj, req)
         .then(result => {
             resp.writeHead(200, {'Content-Type': 'application/json'});
             resp.end(JSON.stringify(result));
@@ -32,7 +32,7 @@ var server = http.createServer(function (req, resp) {
             console.log(err);
 
             resp.writeHead(200, {'Content-Type': 'application/json'});
-            let jsonErr = {"Error":"Oooooooops! Something went terrible wrong!"};
+            let jsonErr = {"Error":"Oooooooops! Something went terrible wrong!", "Message": err};
             resp.end(JSON.stringify(jsonErr));
         });
     }
